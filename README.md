@@ -25,3 +25,6 @@ This application is deployed on [Netlify](https://www.netlify.com/). You can acc
 - jQuery
 - Leaflet
 - Netlify for deployment
+
+## Video demo
+https://www.mediafire.com/file/qr0no8kar0dilof/video+demo.mp4.mov/file
