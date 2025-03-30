@@ -6,13 +6,6 @@ A web application for reporting crimes, featuring an interactive map, crime repo
 ## Deployment
 This application is deployed on [Netlify](https://www.netlify.com/). You can access it [here](https://rihal-challenges-frontend-wam.netlify.app).
 
-### Future Deployment Instructions
-For future deployments, ensure that the following configurations are checked:
-- Verify that the `manifest.json` file is correctly set up for PWA support.
-- Ensure that the service worker is registered properly in `index.html`.
-- Check that all paths in the project are relative and correctly referenced.
-
-
 ## Features
 - Interactive map using Leaflet
 - Crime reporting form
