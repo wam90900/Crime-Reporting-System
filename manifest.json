@@ -1,0 +1,21 @@
+{
+    "name": "Crime Reporting System",
+    "short_name": "CrimeSystem",
+    "start_url": "./",  
+    "scope": "./",  
+
+    "icons": [  
+        {
+            "src": "image/police-badge_1020049.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "image/police-badge_1020049.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]  
+
+
+}
