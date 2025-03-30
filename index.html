@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Reporting Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <script src="script.js"></script>
+    <script src="service_worker.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #BBE1FA; /* Light background */
+            color: #1B262C; /* Dark text color */
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #000000; /* Header color */
+        }
+        #map {
+            height: 600px;
+            border: 2px solid #0F4C75; /* Border around the map */
+            border-radius: 8px; /* Rounded corners */
+        }
+        .popup-content {
+            font-size: 14px;
+        }
+        .filter {
+            margin: 10px 0;
+            background-color: #0F4C75; /* Filter background */
+            padding: 10px;
+            border-radius: 5px;
+            color: white; /* Text color for filter */
+        }
+        .form-container {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #3282B8; /* Form background */
+            border-radius: 8px; /* Rounded corners */
+            color: white; /* Text color for form */
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #1B262C; /* Input border color */
+            border-radius: 5px; /* Rounded corners */
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #0F4C75; /* Button background */
+            color: white; /* Button text color */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3282B8; /* Button hover color */
+        }
+        #searchBar {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #1B262C; /* Search bar border color */
+            border-radius: 5px; /* Rounded corners */
+            width: calc(100% - 20px);
+        }
+        #reportCrimeBtn {
+            margin-bottom: 10px; /* Adjust the value as needed */
+        }
+        @media (max-width: 600px) {
+            #map {
+                height: 300px; /* Adjust map height for smaller screens */
+            }
+            .popup-content {
+                font-size: 14px; /* Smaller font size for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Crime Reporting Dashboard</h1>
+    <button id="reportCrimeBtn">Report Crime</button>
+    
+    <div>
+        <button id="selectLocationBtn">Select Crime Location</button>
+        <button id="confirmLocationBtn" style="display:none;">Confirm Location</button>
+        <input type="text" id="searchBar" placeholder="Search by type, date, or ID">
+    </div>
+    
+    <div class="form-container" id="crimeForm">
+        <h2>Report a Crime</h2>
+        <form id="form">
+            <label for="reportDetails">Report Details:</label>
+            <input type="text" id="reportDetails" required><br><br>
+    
+            <label for="crimeType">Crime Type:</label>
+            <select id="crimeType" required>
+                <option value="Assault">Assault</option>
+                <option value="Robbery">Robbery</option>
+                <option value="Homicide">Homicide</option>
+                <option value="Kidnapping">Kidnapping</option>
+            </select><br><br>
+    
+            <label for="nationalID">National ID:</label>
+            <input type="number" id="nationalID" required><br><br>
+    
+            <label for="latitude">Latitude:</label>
+            <input type="number" id="latitude" step="any" required><br><br>
+    
+            <label for="longitude">Longitude:</label>
+            <input type="number" id="longitude" step="any" required><br><br>
+    
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+    
+    <div class="filter">
+        <label><input type="checkbox" value="Assault" checked> Assault</label>
+        <label><input type="checkbox" value="Robbery" checked> Robbery</label>
+        <label><input type="checkbox" value="Homicide" checked> Homicide</label>
+        <label><input type="checkbox" value="Kidnapping" checked> Kidnapping</label>
+        <label><input type="checkbox" value="Theft" checked> Theft</label>
+    </div>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script> <!-- Link to the external JavaScript file -->
+</body>
+</html>
